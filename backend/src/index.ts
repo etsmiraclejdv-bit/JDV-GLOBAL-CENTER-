@@ -26,6 +26,7 @@ app.use('/api/v1/auth', require('./routes/auth.routes'));
 app.use('/api/v1/users', require('./routes/user.routes'));
 app.use('/api/v1/payments', require('./routes/payment.routes'));
 app.use('/api/v1/wallets', require('./routes/wallet.routes'));
+app.use('/api/v1/jdv-pay', require('./routes/jdv-pay.routes'));
 
 // Error handling
 app.use(errorHandler);
