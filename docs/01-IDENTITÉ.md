@@ -48,7 +48,7 @@ Configuration Globale
     ├── Pays
     ├── Langues
     ├── Devises
-    ├── Modes de paiement
+    ├��─ Modes de paiement
     ├── Taxes locales
     └── Réglementations
 ```
