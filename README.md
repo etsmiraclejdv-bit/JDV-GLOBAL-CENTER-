@@ -1,93 +1,21 @@
-# Next.js
+# JDV GLOBAL CENTER
 
-A modern Next.js 15 application built with TypeScript and Tailwind CSS.
+JDV GLOBAL CENTER est le point d’entrée principal de l’écosystème Joie de Vivre. Les branches spécialisées conservent leurs espaces et fonctions propres ; elles ne remplacent pas l’accueil central.
 
-## 🚀 Features
+## Branches
 
-- **Next.js 15** - Latest version with improved performance and features
-- **React 19** - Latest React version with enhanced capabilities
-- **Tailwind CSS** - Utility-first CSS framework for rapid UI development
+- **JDV CRM** — branche indépendante accessible depuis la route `/crm`. Elle conserve son expérience CRM dédiée.
+- **JDV PAY**, **JDV BUSINESS**, **JDV ACADEMY** — secteurs prévus, à développer séparément. Ils ne sont pas présentés comme opérationnels tant que leurs modules ne sont pas construits.
 
-## 🛠️ Installation
+## Développement
 
-1. Install dependencies:
-  ```bash
-  npm install
-  # or
-  yarn install
-  ```
+Application Next.js 15, React 19, TypeScript et Tailwind CSS. Le serveur de développement utilise le port 4028.
 
-2. Start the development server:
-  ```bash
-  npm run dev
-  # or
-  yarn dev
-  ```
-3. Open [http://localhost:4028](http://localhost:4028) with your browser to see the result.
-
-## 📁 Project Structure
-
-```
-nextjs/
-├── public/             # Static assets
-├── src/
-│   ├── app/            # App router components
-│   │   ├── layout.tsx  # Root layout component
-│   │   └── page.tsx    # Main page component
-│   ├── components/     # Reusable UI components
-│   ├── styles/         # Global styles and Tailwind configuration
-├── next.config.mjs     # Next.js configuration
-├── package.json        # Project dependencies and scripts
-├── postcss.config.js   # PostCSS configuration
-└── tailwind.config.js  # Tailwind CSS configuration
-
+```bash
+npm install
+npm run dev
 ```
 
-## 🧩 Page Editing
+## Règle d’architecture
 
-You can start editing the page by modifying `src/app/page.tsx`. The page auto-updates as you edit the file.
-
-## 🎨 Styling
-
-This project uses Tailwind CSS for styling with the following features:
-- Utility-first approach for rapid development
-- Custom theme configuration
-- Responsive design utilities
-- PostCSS and Autoprefixer integration
-
-## 📦 Available Scripts
-
-- `npm run dev` - Start development server on port 4028
-- `npm run build` - Build the application for production
-- `npm run start` - Start the development server
-- `npm run serve` - Start the production server
-- `npm run lint` - Run ESLint to check code quality
-- `npm run lint:fix` - Fix ESLint issues automatically
-- `npm run format` - Format code with Prettier
-
-## 📱 Deployment
-
-Build the application for production:
-
-  ```bash
-  npm run build
-  ```
-
-## 📚 Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial
-
-You can check out the [Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## 🙏 Acknowledgments
-
-- Built with [Rocket.new](https://rocket.new)
-- Powered by Next.js and React
-- Styled with Tailwind CSS
-
-Built with ❤️ on Rocket.new
-
-<!-- JDV CRM deployment sync 2026-10-04 -->
+La page racine `/` appartient à JDV GLOBAL CENTER. La page commerciale JDV CRM se trouve à `/crm`. Les routes métier existantes du CRM, ses composants et les migrations Supabase sont conservés. Les données et règles de sécurité Supabase ne sont pas modifiées par cette séparation de navigation.
