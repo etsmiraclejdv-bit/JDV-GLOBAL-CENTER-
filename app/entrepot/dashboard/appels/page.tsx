@@ -1,0 +1,7 @@
+'use client';
+import { useCallback,useEffect,useState } from 'react';
+import { supabase } from '@/lib/supabase/client';
+import { useWarehouse } from '@/components/entrepot/WarehouseContext';
+import { Card,PageTitle } from '@/components/entrepot/common';
+type Row={id:string;ticket_number:string;subject:string;priority:string;status:string;created_at:string};
+export default function AppelsPage(){const{current}=useWarehouse();const[data,setData]=useState<Row[]>([]);const[loading,setLoading]=useState(true);const load=useCallback(async()=>{if(!current)return;setLoading(true);const r=await supabase.rpc('jdvcrm_warehouse_tickets_v1',{p_warehouse_id:current.warehouse_id});setData((r.data??[])as Row[]);setLoading(false)},[current]);useEffect(()=>{load()},[load]);return <div className="p-6 space-y-6 text-white"><PageTitle title="Appels & plaintes" subtitle="Suivi des demandes clients et appels à traiter."/><Card>{loading?<p className="text-slate-400">Chargement…</p>:<div className="space-y-2">{data.map(x=><div key={x.id} className="rounded-lg bg-[#0F2347] p-3 flex justify-between"><div><b>{x.ticket_number}</b> · {x.subject}</div><span className="text-slate-400">{x.status}</span></div>)}{!data.length&&<p className="text-slate-500">Aucun appel.</p>}</div>}</Card></div>}
