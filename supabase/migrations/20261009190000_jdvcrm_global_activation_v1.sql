@@ -191,3 +191,33 @@ with check (public.is_org_manager(organization_id) or exists(select 1 from publi
 drop policy if exists jdv_global_crm_prospecteur_insert on public.payments;
 create policy jdv_global_crm_prospecteur_insert on public.payments for insert to authenticated
 with check (public.is_org_manager(organization_id) or exists(select 1 from public.prospecteurs p where p.id=prospecteur_id and p.organization_id=payments.organization_id and p.user_id=auth.uid() and p.status='active'));
+
+
+-- Generate identifiers server-side when forms omit them.
+create or replace function public.jdvcrm_generate_entity_code_v1()
+returns trigger language plpgsql set search_path=pg_catalog,public
+as $function$
+begin
+ if tg_table_name='clients' and nullif(trim(new.code),'') is null then
+  new.code:='CLI-'||to_char(now(),'YYYYMMDD')||'-'||upper(substr(replace(gen_random_uuid()::text,'-',''),1,6));
+ elsif tg_table_name='prospecteurs' and nullif(trim(new.code),'') is null then
+  new.code:='PRO-'||to_char(now(),'YYYYMMDD')||'-'||upper(substr(replace(gen_random_uuid()::text,'-',''),1,6));
+ elsif tg_table_name='articles' and nullif(trim(new.code),'') is null then
+  new.code:='ART-'||to_char(now(),'YYYYMMDD')||'-'||upper(substr(replace(gen_random_uuid()::text,'-',''),1,6));
+ end if;
+ return new;
+end $function$;
+revoke all on function public.jdvcrm_generate_entity_code_v1() from public,anon;
+grant execute on function public.jdvcrm_generate_entity_code_v1() to authenticated;
+do $codes$
+begin
+ if not exists(select 1 from pg_trigger where tgname='trg_jdvcrm_generate_client_code' and tgrelid='public.clients'::regclass) then
+  create trigger trg_jdvcrm_generate_client_code before insert on public.clients for each row execute function public.jdvcrm_generate_entity_code_v1();
+ end if;
+ if not exists(select 1 from pg_trigger where tgname='trg_jdvcrm_generate_prospecteur_code' and tgrelid='public.prospecteurs'::regclass) then
+  create trigger trg_jdvcrm_generate_prospecteur_code before insert on public.prospecteurs for each row execute function public.jdvcrm_generate_entity_code_v1();
+ end if;
+ if not exists(select 1 from pg_trigger where tgname='trg_jdvcrm_generate_article_code' and tgrelid='public.articles'::regclass) then
+  create trigger trg_jdvcrm_generate_article_code before insert on public.articles for each row execute function public.jdvcrm_generate_entity_code_v1();
+ end if;
+end $codes$;
