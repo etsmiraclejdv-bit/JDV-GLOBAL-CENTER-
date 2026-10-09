@@ -1,0 +1,31 @@
+JDV CRM - correctif de synchronisation V8 / GitHub / Supabase / Netlify
+
+COMMENT L'UTILISER
+1. Dézipper ce dossier à la RACINE du dépôt JDV-CORRIGER-FINAL (branche main ou une branche de travail),
+   en acceptant d'écraser les fichiers existants.
+2. Commiter et pousser. Netlify redéploiera tout seul depuis main.
+
+CONTENU
+Fichiers NOUVEAUX
+- src/components/ConcepteurBranchBar.tsx        barre de navigation Admin / Terrain / Concepteur (visible super admin seulement)
+- src/components/VisitsView.tsx                 module visites terrain (issu de la V8)
+- src/lib/visits/helpers.ts                     idem
+- src/lib/services/visitsService.ts             idem
+- src/app/business/dashboard/visites/page.tsx   idem
+- src/app/terrain/dashboard/visites/page.tsx    idem
+- tests/visits.test.mjs                         tests du module visites (V8)
+- supabase/migrations/20261005074655_concepteur_free_access_no_expiry_v1.sql  (déjà appliquée sur Supabase)
+- supabase/migrations/20261005181627_lock_sale_schedule_generator_v1.sql       (déjà appliquée : ferme une fonction sans contrôle d'accès)
+- supabase/migrations/20261005181731_performance_fk_indexes_and_rls_initplan_v1.sql (déjà appliquée : 22 index, 1 doublon retiré, 24 règles RLS optimisées)
+
+Fichiers REMPLACES
+- supabase/migrations/20261004033116_harden_field_visits_ownership_v1.sql  (le vrai SQL de la V8 remplace le fichier vide "checkpoint")
+- src/app/hidden-concepteur-gate/page.tsx        hub des trois branches, corrigé (composant client)
+- src/lib/auth/context.ts                        repli sur l'entreprise dont l'utilisateur est propriétaire
+- src/app/business/dashboard/layout.tsx          lien "Visites terrain" + barre des trois branches
+- src/app/terrain/dashboard/layout.tsx           lien "Mes visites" + barre des trois branches
+- src/app/hidden-concepteur-gate/dashboard/layout.tsx  lien "Demandes d'entreprises" + barre des trois branches
+
+BASE DE REFERENCE : ces fichiers ont été préparés à partir de GitHub main au commit 1503ac3 (4 octobre 2026, 22h28).
+Si main a bougé depuis, vérifier les 4 fichiers remplacés (context.ts et les 3 layouts) avant d'écraser.
+Avant de pousser : npm run type-check && npm test
