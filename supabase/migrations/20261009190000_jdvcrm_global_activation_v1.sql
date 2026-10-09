@@ -163,3 +163,31 @@ begin
   insert into public.organization_members(organization_id,user_id,role_id,member_status,joined_at) values(v_org,v_user,v_role,'active',now());
  end if;
 end $org$;
+
+
+drop policy if exists jdv_global_crm_prospecteur_insert on public.prospects;
+create policy jdv_global_crm_prospecteur_insert on public.prospects for insert to authenticated
+with check (public.is_org_manager(organization_id) or exists(select 1 from public.prospecteurs p where p.id=prospecteur_id and p.organization_id=prospects.organization_id and p.user_id=auth.uid() and p.status='active'));
+drop policy if exists jdv_global_crm_prospecteur_update on public.prospects;
+create policy jdv_global_crm_prospecteur_update on public.prospects for update to authenticated
+using (public.is_org_manager(organization_id) or exists(select 1 from public.prospecteurs p where p.id=prospecteur_id and p.organization_id=prospects.organization_id and p.user_id=auth.uid() and p.status='active'))
+with check (public.is_org_manager(organization_id) or exists(select 1 from public.prospecteurs p where p.id=prospecteur_id and p.organization_id=prospects.organization_id and p.user_id=auth.uid() and p.status='active'));
+drop policy if exists jdv_global_crm_prospecteur_insert on public.clients;
+create policy jdv_global_crm_prospecteur_insert on public.clients for insert to authenticated
+with check (public.is_org_manager(organization_id) or exists(select 1 from public.prospecteurs p where p.id=prospecteur_id and p.organization_id=clients.organization_id and p.user_id=auth.uid() and p.status='active'));
+drop policy if exists jdv_global_crm_prospecteur_update on public.clients;
+create policy jdv_global_crm_prospecteur_update on public.clients for update to authenticated
+using (public.is_org_manager(organization_id) or exists(select 1 from public.prospecteurs p where p.id=prospecteur_id and p.organization_id=clients.organization_id and p.user_id=auth.uid() and p.status='active'))
+with check (public.is_org_manager(organization_id) or exists(select 1 from public.prospecteurs p where p.id=prospecteur_id and p.organization_id=clients.organization_id and p.user_id=auth.uid() and p.status='active'));
+drop policy if exists jdv_global_crm_prospecteur_insert on public.field_visits;
+create policy jdv_global_crm_prospecteur_insert on public.field_visits for insert to authenticated
+with check (public.is_org_manager(organization_id) or exists(select 1 from public.prospecteurs p where p.id=prospecteur_id and p.organization_id=field_visits.organization_id and p.user_id=auth.uid() and p.status='active'));
+drop policy if exists jdv_global_crm_prospecteur_insert on public.prospect_activities;
+create policy jdv_global_crm_prospecteur_insert on public.prospect_activities for insert to authenticated
+with check (public.is_org_manager(organization_id) or exists(select 1 from public.prospecteurs p where p.id=prospecteur_id and p.organization_id=prospect_activities.organization_id and p.user_id=auth.uid() and p.status='active'));
+drop policy if exists jdv_global_crm_prospecteur_insert on public.sales;
+create policy jdv_global_crm_prospecteur_insert on public.sales for insert to authenticated
+with check (public.is_org_manager(organization_id) or exists(select 1 from public.prospecteurs p where p.id=prospecteur_id and p.organization_id=sales.organization_id and p.user_id=auth.uid() and p.status='active'));
+drop policy if exists jdv_global_crm_prospecteur_insert on public.payments;
+create policy jdv_global_crm_prospecteur_insert on public.payments for insert to authenticated
+with check (public.is_org_manager(organization_id) or exists(select 1 from public.prospecteurs p where p.id=prospecteur_id and p.organization_id=payments.organization_id and p.user_id=auth.uid() and p.status='active'));
