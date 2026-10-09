@@ -1,0 +1,15 @@
+REVOKE EXECUTE ON FUNCTION public.jdvcrm_generate_followup_notifications() FROM public, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.jdvcrm_archive_cold_clients() FROM public, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.jdvcrm_refresh_payment_schedule(uuid) FROM public, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.jdvcrm_run_daily_automations() FROM public, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.jdv_process_prospect_followups() FROM public, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.jdv_archive_inactive_clients() FROM public, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.jdv_run_daily_business_maintenance() FROM public, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.jdv_business_integrity_report() FROM public, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.jdvcrm_refresh_schedule_v41(uuid) FROM public, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.jdvcrm_refresh_client_activity_v41(uuid) FROM public, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.jdvcrm_refresh_overdue_schedules_v41() FROM public, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.jdvcrm_overdue_notifications_v41() FROM public, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.jdvcrm_daily_maintenance_v41() FROM public, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.jdvcrm_mark_late_schedules_v43() FROM public, anon, authenticated;
+REVOKE EXECUTE ON FUNCTION public.jdvcrm_get_payment_followups_v43(uuid) FROM public, anon, authenticated;

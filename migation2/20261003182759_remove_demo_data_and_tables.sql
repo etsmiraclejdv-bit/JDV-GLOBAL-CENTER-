@@ -1,0 +1,4 @@
+-- JDV CRM migration history checkpoint
+-- Remote Supabase project arxhppptxeeyeexkdyjv has this migration recorded as applied.
+-- historical cleanup migration; production cleanup already applied
+-- This file intentionally performs no SQL so migration history can be tracked without replaying production changes.

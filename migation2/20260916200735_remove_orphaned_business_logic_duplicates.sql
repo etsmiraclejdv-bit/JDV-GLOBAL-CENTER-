@@ -1,0 +1,14 @@
+drop function if exists public.jdv_protect_prospect_assignment();
+drop function if exists public.jdv_audit_prospect_assignment();
+drop function if exists public.jdv_create_sale_commission();
+drop function if exists public.jdv_validate_prospecteur_stock();
+drop function if exists public.jdv_check_duplicate_prospect_phone();
+drop function if exists public.jdvcrm_check_duplicate_prospect_phone();
+drop function if exists public.jdvcrm_audit_payment();
+drop function if exists public.jdvcrm_payment_client_activity_v41();
+drop function if exists public.jdvcrm_update_client_activity();
+drop function if exists public.jdvcrm_validate_commission();
+drop function if exists public.jdvcrm_validate_payment();
+drop function if exists public.jdvcrm_validate_payment_v41();
+drop function if exists public.jdvcrm_validate_schedule();
+drop function if exists public.jdvcrm_validate_supplier_payment_v1();

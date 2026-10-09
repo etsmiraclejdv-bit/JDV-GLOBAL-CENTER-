@@ -1,0 +1,4 @@
+-- JDV CRM migration history checkpoint
+-- Remote Supabase project arxhppptxeeyeexkdyjv has this migration recorded as applied.
+-- historical remote migration; demo seed intentionally not replayed in source-controlled rebuild
+-- This file intentionally performs no SQL so migration history can be tracked without replaying production changes.
