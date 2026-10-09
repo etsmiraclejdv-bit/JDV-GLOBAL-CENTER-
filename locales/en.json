@@ -1,0 +1,141 @@
+{
+    "common": {
+        "save": "Save",
+        "cancel": "Cancel",
+        "delete": "Delete",
+        "edit": "Edit",
+        "add": "Add",
+        "search": "Search",
+        "filter": "Filter",
+        "loading": "Loading...",
+        "error": "An error occurred",
+        "empty": "No data",
+        "confirm": "Confirm",
+        "close": "Close",
+        "back": "Back",
+        "next": "Next",
+        "previous": "Previous",
+        "status": "Status",
+        "actions": "Actions",
+        "date": "Date",
+        "amount": "Amount",
+        "name": "Name",
+        "phone": "Phone",
+        "email": "Email",
+        "city": "City",
+        "country": "Country",
+        "notes": "Notes",
+        "active": "Active",
+        "inactive": "Inactive",
+        "all": "All"
+    },
+    "auth": {
+        "login": "Sign in",
+        "logout": "Sign out",
+        "email": "Email address",
+        "password": "Password",
+        "forgotPassword": "Forgot password?",
+        "showPassword": "Show password",
+        "hidePassword": "Hide password",
+        "loginButton": "Login",
+        "loginError": "Incorrect credentials",
+        "accountInactive": "Account inactive",
+        "unauthorized": "Account not authorized",
+        "profileNotFound": "Profile not found",
+        "sessionChecking": "Checking session..."
+    },
+    "business": {
+        "dashboard": {
+            "title": "Dashboard",
+            "subtitle": "Overview of your activity"
+        },
+        "prospects": {
+            "title": "Prospects",
+            "new": "New prospect",
+            "hot": "Hot",
+            "warm": "Warm",
+            "cold": "Cold",
+            "converted": "Converted",
+            "lost": "Lost"
+        },
+        "clients": {
+            "title": "Clients",
+            "detail": "Client profile",
+            "newSale": "New sale for this client"
+        },
+        "sales": {
+            "title": "Sales",
+            "new": "New sale",
+            "cash": "Cash",
+            "credit": "Credit",
+            "pending": "Pending",
+            "active": "Active",
+            "completed": "Completed",
+            "cancelled": "Cancelled"
+        },
+        "catalogue": {
+            "title": "Product catalogue",
+            "new": "New product"
+        },
+        "settings": {
+            "title": "Settings",
+            "general": "General",
+            "personalization": "Personalization",
+            "advanced": "Advanced",
+            "payment": "Online payment"
+        },
+        "audit": {
+            "title": "Audit log"
+        }
+    },
+    "terrain": {
+        "dashboard": {
+            "title": "My activity",
+            "greeting": "Hello"
+        },
+        "prospects": {
+            "title": "My prospects",
+            "new": "New prospect"
+        },
+        "sales": {
+            "title": "My sales",
+            "new": "Record a sale"
+        },
+        "commission": {
+            "title": "My commission"
+        },
+        "profile": {
+            "title": "My profile"
+        }
+    },
+    "superadmin": {
+        "dashboard": {
+            "title": "Platform supervision"
+        },
+        "settings": {
+            "title": "Platform settings",
+            "plans": "Subscription plans",
+            "admins": "Super Admin accounts",
+            "fedapay": "FedaPay configuration"
+        },
+        "audit": {
+            "title": "Platform audit log"
+        }
+    },
+    "notifications": {
+        "title": "Notifications",
+        "markRead": "Mark as read",
+        "markAllRead": "Mark all as read",
+        "noNotifications": "No notifications",
+        "viewAll": "View all"
+    },
+    "profile": {
+        "title": "My profile",
+        "firstName": "First name",
+        "lastName": "Last name",
+        "displayName": "Display name",
+        "language": "Preferred language",
+        "avatar": "Profile picture",
+        "saveSuccess": "Profile updated successfully"
+    }
+}

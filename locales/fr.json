@@ -1,0 +1,141 @@
+{
+    "common": {
+        "save": "Enregistrer",
+        "cancel": "Annuler",
+        "delete": "Supprimer",
+        "edit": "Modifier",
+        "add": "Ajouter",
+        "search": "Rechercher",
+        "filter": "Filtrer",
+        "loading": "Chargement...",
+        "error": "Une erreur est survenue",
+        "empty": "Aucune donn\u00e9e",
+        "confirm": "Confirmer",
+        "close": "Fermer",
+        "back": "Retour",
+        "next": "Suivant",
+        "previous": "Pr\u00e9c\u00e9dent",
+        "status": "Statut",
+        "actions": "Actions",
+        "date": "Date",
+        "amount": "Montant",
+        "name": "Nom",
+        "phone": "T\u00e9l\u00e9phone",
+        "email": "Email",
+        "city": "Ville",
+        "country": "Pays",
+        "notes": "Notes",
+        "active": "Actif",
+        "inactive": "Inactif",
+        "all": "Tous"
+    },
+    "auth": {
+        "login": "Se connecter",
+        "logout": "Se d\u00e9connecter",
+        "email": "Adresse email",
+        "password": "Mot de passe",
+        "forgotPassword": "Mot de passe oubli\u00e9 ?",
+        "showPassword": "Afficher le mot de passe",
+        "hidePassword": "Masquer le mot de passe",
+        "loginButton": "Connexion",
+        "loginError": "Identifiants incorrects",
+        "accountInactive": "Compte inactif",
+        "unauthorized": "Compte non autoris\u00e9",
+        "profileNotFound": "Profil introuvable",
+        "sessionChecking": "V\u00e9rification de session..."
+    },
+    "business": {
+        "dashboard": {
+            "title": "Tableau de bord",
+            "subtitle": "Vue d'ensemble de votre activit\u00e9"
+        },
+        "prospects": {
+            "title": "Prospects",
+            "new": "Nouveau prospect",
+            "hot": "Chaud",
+            "warm": "Ti\u00e8de",
+            "cold": "Froid",
+            "converted": "Converti",
+            "lost": "Perdu"
+        },
+        "clients": {
+            "title": "Clients",
+            "detail": "Fiche client",
+            "newSale": "Nouvelle vente pour ce client"
+        },
+        "sales": {
+            "title": "Ventes",
+            "new": "Nouvelle vente",
+            "cash": "Comptant",
+            "credit": "Cr\u00e9dit",
+            "pending": "En attente",
+            "active": "Actif",
+            "completed": "Termin\u00e9",
+            "cancelled": "Annul\u00e9"
+        },
+        "catalogue": {
+            "title": "Catalogue articles",
+            "new": "Nouvel article"
+        },
+        "settings": {
+            "title": "Param\u00e8tres",
+            "general": "G\u00e9n\u00e9ral",
+            "personalization": "Personnalisation",
+            "advanced": "Avanc\u00e9s",
+            "payment": "Paiement en ligne"
+        },
+        "audit": {
+            "title": "Journal d'audit"
+        }
+    },
+    "terrain": {
+        "dashboard": {
+            "title": "Mon activit\u00e9",
+            "greeting": "Bonjour"
+        },
+        "prospects": {
+            "title": "Mes prospects",
+            "new": "Nouveau prospect"
+        },
+        "sales": {
+            "title": "Mes ventes",
+            "new": "Enregistrer une vente"
+        },
+        "commission": {
+            "title": "Ma commission"
+        },
+        "profile": {
+            "title": "Mon profil"
+        }
+    },
+    "superadmin": {
+        "dashboard": {
+            "title": "Supervision plateforme"
+        },
+        "settings": {
+            "title": "Param\u00e8tres plateforme",
+            "plans": "Plans d'abonnement",
+            "admins": "Comptes Super Admin",
+            "fedapay": "Configuration FedaPay"
+        },
+        "audit": {
+            "title": "Journal d'audit plateforme"
+        }
+    },
+    "notifications": {
+        "title": "Notifications",
+        "markRead": "Marquer comme lu",
+        "markAllRead": "Tout marquer comme lu",
+        "noNotifications": "Aucune notification",
+        "viewAll": "Voir tout"
+    },
+    "profile": {
+        "title": "Mon profil",
+        "firstName": "Pr\u00e9nom",
+        "lastName": "Nom",
+        "displayName": "Nom d'affichage",
+        "language": "Langue pr\u00e9f\u00e9r\u00e9e",
+        "avatar": "Photo de profil",
+        "saveSuccess": "Profil mis \u00e0 jour avec succ\u00e8s"
+    }
+}
