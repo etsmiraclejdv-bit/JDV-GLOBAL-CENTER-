@@ -12,8 +12,8 @@ export const viewport: Viewport = {
 };
 
 export const metadata: Metadata = {
-  title: 'JDV CRM — Gestion Crédit & Prospecteurs Terrain',
-  description: 'JDV CRM aide les entreprises ouest-africaines à gérer la vente à crédit, les paiements journaliers, les prospecteurs terrain et le recouvrement depuis un seul tableau de bord.',
+  title: 'JDV GLOBAL CENTER — Écosystème Joie de Vivre',
+  description: 'JDV GLOBAL CENTER est le point d’entrée de l’écosystème Joie de Vivre et de ses branches indépendantes.',
   icons: {
     icon: [{ url: '/favicon.ico', type: 'image/x-icon' }],
   },
