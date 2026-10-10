@@ -128,7 +128,7 @@ select
   r.sale_id,
   s.prospecteur_id,
   r.returned_by_user_id,
-  coalesce(r.returned_by_name, nullif(trim(coalesce(p.full_name, concat_ws(' ',p.first_name,p.last_name))),''), u.email) as returned_by_name,
+  coalesce(r.returned_by_name, nullif(trim(coalesce(p.full_name, concat_ws(' ',p.first_name,p.last_name))),''), p.email) as returned_by_name,
   coalesce(r.returned_by_role, rr.code) as returned_by_role,
   r.warehouse_id,
   w.name as warehouse_name,
@@ -151,7 +151,6 @@ join public.articles a on a.id=ri.article_id
 left join public.warehouses w on w.id=r.warehouse_id
 left join public.warehouse_subwarehouses sw on sw.id=r.subwarehouse_id
 left join public.profiles p on p.id=coalesce(r.returned_by_user_id,r.created_by)
-left join auth.users u on u.id=coalesce(r.returned_by_user_id,r.created_by)
 left join lateral (
   select roles.code from public.organization_members om
   join public.roles on roles.id=om.role_id
