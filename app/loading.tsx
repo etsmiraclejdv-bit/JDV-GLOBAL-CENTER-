@@ -12,9 +12,9 @@ const steps = [
 ];
 
 const slides = [
-  { image: '/assets/images/file_0000000059c881f4a4ec883ca9f5d1eb-1790309285291.png', title: 'Un écosystème numérique ouvert sur le monde', alt: 'Identité visuelle de JDV Global Center, plateforme numérique internationale' },
-  { image: '/assets/images/file_0000000059c881f4a4ec883ca9f5d1eb-1790309285291.png', title: 'Des services réunis pour les individus et les organisations', alt: 'Logo JDV Global Center illustrant des services numériques connectés' },
-  { image: '/assets/images/file_0000000059c881f4a4ec883ca9f5d1eb-1790309285291.png', title: 'Une plateforme qui accompagne vos projets et votre croissance', alt: 'Logo JDV Global Center' },
+  { image: '/assets/images/app_logo.png', title: 'Un écosystème numérique ouvert sur le monde', alt: 'Identité visuelle de JDV Global Center, plateforme numérique internationale' },
+  { image: '/assets/images/app_logo.png', title: 'Des services réunis pour les individus et les organisations', alt: 'Logo JDV Global Center illustrant des services numériques connectés' },
+  { image: '/assets/images/app_logo.png', title: 'Une plateforme qui accompagne vos projets et votre croissance', alt: 'Logo JDV Global Center' },
 ];
 
 export default function Loading() {
@@ -34,7 +34,7 @@ export default function Loading() {
           <div className="jdv-loading__logo-wrap">
             <div className="jdv-loading__orbit jdv-loading__orbit--outer" />
             <div className="jdv-loading__orbit jdv-loading__orbit--inner" />
-            <div className="jdv-loading__logo-card"><img src="/assets/images/file_0000000059c881f4a4ec883ca9f5d1eb-1790309285291.png" alt="Logo JDV Global Center" className="jdv-loading__logo" /></div>
+            <div className="jdv-loading__logo-card"><img src="/assets/images/app_logo.png" alt="Logo JDV Global Center" className="jdv-loading__logo" /></div>
           </div>
           <div className="jdv-loading__name">JDV <span>Global Center</span></div>
           <p>Services numériques • Finances • Entreprises • Commerce • Communauté</p>
