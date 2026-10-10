@@ -42,7 +42,7 @@ begin
     raise exception 'Le code et le nom doivent contenir au moins deux caractères';
   end if;
   insert into public.warehouses(organization_id,code,name,address,city,country,manager_user_id,active)
-  values(p_organization_id,upper(trim(p_code)),trim(p_name),nullif(trim(p_address),''),nullif(trim(p_city),''),coalesce(nullif(trim(p_country),''),'Benin'),auth.uid(),true)
+  values(p_organization_id,upper(trim(p_code)),trim(p_name),nullif(trim(p_address),''),nullif(trim(p_city),''),coalesce(nullif(trim(p_country),''),'Benin'),null,true)
   returning id into v_id;
   return v_id;
 end $$;
