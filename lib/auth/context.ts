@@ -51,8 +51,7 @@ export async function getAuthContext(): Promise<AuthContextData | null> {
     supabase.from('organizations')
       .select('id')
       .eq('owner_id', user.id)
-      .order('created_at', { ascending: true })
-      .limit(1),
+      .order('created_at', { ascending: true }),
   ]);
 
   // Do not silently turn schema/permission errors into "no organization".
@@ -65,7 +64,8 @@ export async function getAuthContext(): Promise<AuthContextData | null> {
   const isSuperAdmin = sa?.admin_status === 'active';
   const member = ((memberRes.data ?? []) as MembershipRow[])[0] ?? null;
   const prosp = ((prospRes.data ?? []) as ProspecteurRow[])[0] ?? null;
-  const owned = ((ownedRes.data ?? []) as OrganizationRow[])[0] ?? null;
+  const ownedRows = (ownedRes.data ?? []) as OrganizationRow[];
+  const owned = ownedRows[0] ?? null;
   const profile = profileRes.data as ProfileRow | null;
 
   let memberRole: string | null = null;
@@ -85,7 +85,7 @@ export async function getAuthContext(): Promise<AuthContextData | null> {
     user.email ||
     'Utilisateur';
 
-  const memberOwnsOrganization = !!member && !!owned && member.organization_id === owned.id;
+  const memberOwnsOrganization = !!member && ownedRows.some((organization) => organization.id === member.organization_id);
   const ownerFallback = !member && !prosp && !!owned;
   const isOrgAdmin =
     (!!memberRole && ORG_ADMIN_ROLES.includes(memberRole.toLowerCase())) ||
