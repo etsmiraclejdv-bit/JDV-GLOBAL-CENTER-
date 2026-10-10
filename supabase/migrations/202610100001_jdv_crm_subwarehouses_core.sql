@@ -72,8 +72,19 @@ begin
   new.zone:=nullif(trim(new.zone),'');
   new.updated_at:=now();
   if new.manager_user_id is not null and not (
-    public.is_super_admin()
-    or public.is_org_admin(v_org)
+    exists (
+      select 1 from public.super_admins sa
+      where sa.user_id=new.manager_user_id and sa.admin_status='active'
+    )
+    or exists (
+      select 1
+      from public.organization_members om
+      join public.roles r on r.id=om.role_id
+      where om.user_id=new.manager_user_id
+        and om.organization_id=v_org
+        and om.member_status='active'
+        and r.code in ('owner','admin','business_admin')
+    )
     or exists (
       select 1 from public.warehouse_managers wm
       where wm.warehouse_id=new.parent_warehouse_id
