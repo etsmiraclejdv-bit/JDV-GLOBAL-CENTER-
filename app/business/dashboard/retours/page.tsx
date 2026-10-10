@@ -3,7 +3,7 @@
 import { useEffect,useState } from 'react';
 import { supabase } from '@/lib/supabase/client';
 
-type Row={return_id:string;return_number:string;return_date:string;reason:string;status:string;prospecteur_id:string|null;returned_by_name:string|null;returned_by_role:string|null;warehouse_name:string|null;warehouse_code:string|null;subwarehouse_name:string|null;subwarehouse_code:string|null;received_at:string|null;article_code:string;article_name:string;quantity:number};
+type Row={return_id:string;return_item_id:string;return_number:string;return_date:string;reason:string;status:string;prospecteur_id:string|null;returned_by_name:string|null;returned_by_role:string|null;warehouse_name:string|null;warehouse_code:string|null;subwarehouse_name:string|null;subwarehouse_code:string|null;received_at:string|null;article_code:string;article_name:string;quantity:number};
 
 export default function RetoursPage(){
  const [data,setData]=useState<Row[]>([]); const [loading,setLoading]=useState(true); const [error,setError]=useState('');
