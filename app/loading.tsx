@@ -1,20 +1,20 @@
 "use client";
 
 import { useEffect, useState } from 'react';
-import { ArrowRight, Banknote, Building2, CreditCard, MapPin, Users } from 'lucide-react';
+import { ArrowRight, Banknote, BriefcaseBusiness, Globe2, Landmark, Users } from 'lucide-react';
 
 const steps = [
-  { icon: Building2, label: 'Entreprise', text: 'Pilotez votre activité' },
-  { icon: MapPin, label: 'Prospection', text: 'Trouvez les bons prospects' },
-  { icon: Users, label: 'Conversion', text: 'Transformez en clients' },
-  { icon: CreditCard, label: 'Vente à crédit', text: 'Suivez chaque échéance' },
-  { icon: Banknote, label: 'Recouvrement', text: 'Sécurisez vos paiements' },
+  { icon: Globe2, label: 'Écosystème', text: 'Un espace numérique intégré' },
+  { icon: Landmark, label: 'Services', text: 'Des solutions au même endroit' },
+  { icon: BriefcaseBusiness, label: 'Entreprises', text: 'Des outils pour vos activités' },
+  { icon: Users, label: 'Communauté', text: 'Des personnes et organisations connectées' },
+  { icon: Banknote, label: 'Finances', text: 'Des services pour vos opérations' },
 ];
 
 const slides = [
-  { image: '/assets/images/CRM mobile pour commerciaux terrain.png', title: 'Prospectez partout avec JDV CRM', alt: 'Commercial terrain enregistrant un prospect dans JDV CRM' },
-  { image: '/assets/images/Présentation CRM JDV en entreprise.png', title: 'Transformez vos opportunités en ventes', alt: 'Commercial présentant JDV CRM à son client' },
-  { image: '/assets/images/JDV CRM _Votre succès, notre priorité.png', title: 'Pilotez votre croissance avec votre équipe', alt: 'Équipe commerciale utilisant le tableau de bord JDV CRM' },
+  { image: '/assets/images/file_0000000059c881f4a4ec883ca9f5d1eb-1790309285291.png', title: 'Un écosystème numérique ouvert sur le monde', alt: 'Identité visuelle de JDV Global Center, plateforme numérique internationale' },
+  { image: '/assets/images/file_0000000059c881f4a4ec883ca9f5d1eb-1790309285291.png', title: 'Des services réunis pour les individus et les organisations', alt: 'Logo JDV Global Center illustrant des services numériques connectés' },
+  { image: '/assets/images/file_0000000059c881f4a4ec883ca9f5d1eb-1790309285291.png', title: 'Une plateforme qui accompagne vos projets et votre croissance', alt: 'Logo JDV Global Center' },
 ];
 
 export default function Loading() {
@@ -25,7 +25,7 @@ export default function Loading() {
   }, []);
 
   return (
-    <main className="jdv-loading jdv-loading--extended" aria-label="Chargement de JDV CRM">
+    <main className="jdv-loading jdv-loading--extended" aria-label="Chargement de JDV Global Center">
       <div className="jdv-loading__glow jdv-loading__glow--one" />
       <div className="jdv-loading__glow jdv-loading__glow--two" />
       <div className="jdv-loading__grid" />
@@ -34,14 +34,14 @@ export default function Loading() {
           <div className="jdv-loading__logo-wrap">
             <div className="jdv-loading__orbit jdv-loading__orbit--outer" />
             <div className="jdv-loading__orbit jdv-loading__orbit--inner" />
-            <div className="jdv-loading__logo-card"><img src="/assets/images/app_logo.png" alt="JDV CRM" className="jdv-loading__logo" /></div>
+            <div className="jdv-loading__logo-card"><img src="/assets/images/file_0000000059c881f4a4ec883ca9f5d1eb-1790309285291.png" alt="Logo JDV Global Center" className="jdv-loading__logo" /></div>
           </div>
-          <div className="jdv-loading__name">JDV <span>CRM</span></div>
-          <p>Gestion • Prospection • Vente à crédit • Recouvrement</p>
+          <div className="jdv-loading__name">JDV <span>Global Center</span></div>
+          <p>Services numériques • Finances • Entreprises • Commerce • Communauté</p>
         </div>
 
         <div className="jdv-loading__headline">
-          <span>Une entreprise mieux gérée.</span><strong>Des prospects mieux convertis.</strong><span>Des ventes mieux suivies.</span>
+          <span>Un monde de services à portée de main.</span><strong>Un écosystème numérique pour vos projets.</strong><span>Des solutions pour avancer ensemble.</span>
         </div>
 
         <div className="jdv-loading__flow" aria-hidden="true">
@@ -55,22 +55,22 @@ export default function Loading() {
 
         <div className="jdv-loading__visual" aria-live="polite">
           <div className="jdv-loading__hero">
-            {slides.map((item, index) => <img key={item.image} src={item.image} alt={item.alt} className={`jdv-loading__hero-image ${index === slide ? 'is-active' : ''}`} />)}
+            {slides.map((item, index) => <img key={item.image + index} src={item.image} alt={item.alt} className={`jdv-loading__hero-image ${index === slide ? 'is-active' : ''}`} />)}
             <div className="jdv-loading__hero-overlay" />
-            <div className="jdv-loading__hero-caption"><span>JDV CRM • {slide + 1}/3</span><strong>{slides[slide].title}</strong></div>
+            <div className="jdv-loading__hero-caption"><span>JDV GLOBAL CENTER • {slide + 1}/3</span><strong>{slides[slide].title}</strong></div>
           </div>
         </div>
 
         <div className="jdv-loading__timeline" aria-hidden="true">
-          {slides.map((item, index) => <i key={item.image} className={index === slide ? 'is-active' : ''} />)}
+          {slides.map((item, index) => <i key={item.image + index} className={index === slide ? 'is-active' : ''} />)}
         </div>
 
         <div className="jdv-loading__progress">
           <div className="jdv-loading__progress-track"><span /></div>
-          <div className="jdv-loading__status"><span>JDV CRM prépare votre espace</span><span>30 secondes</span></div>
+          <div className="jdv-loading__status"><span>JDV Global Center prépare votre espace</span><span>Chargement en cours</span></div>
         </div>
       </section>
-      <p className="jdv-loading__footer">Votre activité. Votre contrôle. Votre croissance.</p>
+      <p className="jdv-loading__footer">Connecter les services. Accompagner les projets. Ouvrir les possibilités.</p>
     </main>
   );
 }
