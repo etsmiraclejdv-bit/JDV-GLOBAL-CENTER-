@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ArrowRight, Award, Banknote, BriefcaseBusiness, Building2, CheckCircle2, CreditCard, GraduationCap, Globe2, Landmark, MapPin, Package, Quote, ShieldCheck, Target, Users } from 'lucide-react';
+import { ArrowRight, Award, Banknote, BriefcaseBusiness, Building2, CheckCircle2, CreditCard, Globe2, Landmark, Package, Quote, ShieldCheck, Target, Users } from 'lucide-react';
 
 const scenes = [
   { eyebrow:'JDV GLOBAL CENTER', title:'Un écosystème numérique pensé pour vos projets.', text:'JDV Global Center rassemble des services numériques, financiers, commerciaux, professionnels et sociaux dans un espace conçu pour les individus et les organisations.', icon:Globe2, visual:'vision' },
