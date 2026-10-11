@@ -21,11 +21,11 @@ export interface AuthContextData {
 
 const ORG_ADMIN_ROLES = ['business_admin', 'admin'];
 
-type MembershipRow = { organization_id: string; role_id: string };
+type MembershipRow = { organization_id: string; role_id: string; joined_at?: string | null };
 type RoleRow = { code: string };
 type ProspecteurRow = { id: string; organization_id: string };
 type ProfileRow = { full_name?: string | null; first_name?: string | null; last_name?: string | null };
-type OrganizationRow = { id: string };
+type OrganizationRow = { id: string; name?: string | null; slug?: string | null };
 
 export async function getAuthContext(): Promise<AuthContextData | null> {
   const { data: { user }, error: userError } = await supabase.auth.getUser();
@@ -34,11 +34,10 @@ export async function getAuthContext(): Promise<AuthContextData | null> {
   const [superRes, memberRes, prospRes, profileRes, ownedRes] = await Promise.all([
     supabase.from('super_admins').select('id, admin_status').eq('user_id', user.id).maybeSingle(),
     supabase.from('organization_members')
-      .select('organization_id, role_id')
+      .select('organization_id, role_id, joined_at')
       .eq('user_id', user.id)
       .eq('member_status', 'active')
-      .order('joined_at', { ascending: true })
-      .limit(1),
+      .order('joined_at', { ascending: true }),
     supabase.from('prospecteurs')
       .select('id, organization_id')
       .eq('user_id', user.id)
@@ -49,24 +48,33 @@ export async function getAuthContext(): Promise<AuthContextData | null> {
       .eq('id', user.id)
       .maybeSingle(),
     supabase.from('organizations')
-      .select('id')
+      .select('id, name, slug')
       .eq('owner_id', user.id)
       .order('created_at', { ascending: true }),
   ]);
 
-  // Do not silently turn schema/permission errors into "no organization".
-  const criticalErrors = [superRes.error, memberRes.error, prospRes.error, ownedRes.error].filter(Boolean);
+  // Never disguise schema/permission failures as an account without an organization.
+  const criticalErrors = [superRes.error, memberRes.error, prospRes.error, profileRes.error, ownedRes.error].filter(Boolean);
   if (criticalErrors.length) {
-    throw new Error('Impossible de charger les droits et rattachements du compte.');
+    throw new Error('Impossible de charger les droits et rattachements du compte. Vérifiez les journaux Supabase.');
   }
 
   const sa = superRes.data as { admin_status?: string } | null;
   const isSuperAdmin = sa?.admin_status === 'active';
-  const member = ((memberRes.data ?? []) as MembershipRow[])[0] ?? null;
+  const members = (memberRes.data ?? []) as MembershipRow[];
   const prosp = ((prospRes.data ?? []) as ProspecteurRow[])[0] ?? null;
   const ownedRows = (ownedRes.data ?? []) as OrganizationRow[];
-  const owned = ownedRows[0] ?? null;
   const profile = profileRes.data as ProfileRow | null;
+
+  // If an account belongs to several organizations, use the explicitly designated
+  // JDV GLOBAL CENTER organization as its default when the account is its owner/member.
+  // Otherwise preserve the earliest active membership; do not create or rewrite memberships.
+  const primaryOwnedOrg = ownedRows.find((org) => org.slug === 'jdv-global-center');
+  const preferredMember = primaryOwnedOrg
+    ? members.find((member) => member.organization_id === primaryOwnedOrg.id)
+    : undefined;
+  const member = preferredMember ?? members[0] ?? null;
+  const owned = primaryOwnedOrg ?? ownedRows[0] ?? null;
 
   let memberRole: string | null = null;
   if (member?.role_id) {
@@ -75,7 +83,7 @@ export async function getAuthContext(): Promise<AuthContextData | null> {
       .select('code')
       .eq('id', member.role_id)
       .maybeSingle();
-    if (roleError) throw new Error('Impossible de charger le rôle du compte.');
+    if (roleError) throw new Error('Impossible de charger le rôle du compte. Vérifiez les journaux Supabase.');
     memberRole = (roleData as RoleRow | null)?.code ?? null;
   }
 
